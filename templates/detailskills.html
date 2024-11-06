@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+        <div class="row justify-content-center">
+            <h1 class="h11">О скиле</h1>
+            <div class="d-flex justify-content-center mb-4">
+                <div class="card" style="width: 800px;">
+                    <div class="row g-0"> 
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{% url 'detailskills' skill.id %}">{{ skill.skill_name }}</a>
+                                </h5>
+                                <p class="card-text">{{ skill.description }}</p>
+                                <p class="card-text">{{ skill.category_id }}</p>
+                                <p class="card-text"><small class="text-muted">{{ skill.created_at }}</small></p>
+                                <a href="{% url 'updateskills' skill.id %}" class="btn btn-primary">Update</a>
+                                <a href="{% url 'deleteskills' skill.id %}" class="btn btn-primary">delete</a>                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+</div>
+{% endblock content %}

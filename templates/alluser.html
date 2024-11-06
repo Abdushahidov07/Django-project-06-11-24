@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    {% if users.count > 0 %}
+        <div class="row justify-content-center">
+            <h1 class="h11">Все USER</h1>
+            {% for user in users %}
+            <div class="d-flex justify-content-center mb-4">
+                <div class="card" style="width: 800px;">
+                    <div class="row g-0"> 
+                        <div class="col-md-4">
+                            <img src="{{ user.profile_pic.url|default:'path/to/default-image.jpg' }}" class="img-fluid rounded-start" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{% url 'detailuser' user.id %}">{{ user.f_name }}{{ user.l_name }}-- {{user.username}}</a>
+                                </h5>
+                                <p class="card-text">{{ user.age }}</p>
+                                <p class="card-text">{{ user.phone_number }}</p>
+                                <p class="card-text">{{ user.duration }}</p>
+                                <p class="card-text"><small class="text-muted">{{ user.email }}</small></p>
+                                <a href="{% url 'detailuser' user.id %}" class="btn btn-primary">Show</a>
+                                <a href="{% url 'createskills' %}" class="btn btn-primary">ADD skills</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No users available at the moment.</p>
+    {% endif %}
+</div>
+{% endblock content %}

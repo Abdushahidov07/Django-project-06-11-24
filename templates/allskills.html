@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    {% if skills.count > 0 %}
+        <div class="row justify-content-center">
+            <h1 class="h11">Все Скилы</h1>
+            {% for skill in skills %}
+            <div class="d-flex justify-content-center mb-4">
+                <div class="card" style="width: 800px;">
+                    <div class="row g-0"> 
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{% url 'detailskill' skill.id %}">{{ skill.skill_name }}</a>
+                                </h5>
+                                <p class="card-text">{{ skill.description }}</p>
+                                <p class="card-text">{{ skill.category_id }}</p>
+                                <p class="card-text"><small class="text-muted">{{ skill.created_at }}</small></p>
+                                <a href="{% url 'detailskill' skill.id %}" class="btn btn-primary">Show</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No skills available at the moment.</p>
+    {% endif %}
+</div>
+{% endblock content %}

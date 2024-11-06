@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+        <div class="row justify-content-center">
+            <h1 class="h11">О заявке</h1>
+            <div class="d-flex justify-content-center mb-4">
+                <div class="card" style="width: 800px;">
+                    <div class="row g-0"> 
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{% url 'detailapplication' application.id %}">{{ application.user_id }}</a>
+                                </h5>
+                                <p class="card-text">{{ application.message }}</p>
+                                <p class="card-text">{{ application.problems_id }}</p>
+                                <p class="card-text">{{ application.duration }}</p>
+                                <p class="card-text"><small class="text-muted">{{ application.created_at }}</small></p>
+                                <a href="{% url 'updateapplication' application.id %}" class="btn btn-primary">Update</a>
+                                <a href="{% url 'deleteapplication' application.id %}" class="btn btn-primary">delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+</div>
+{% endblock content %}

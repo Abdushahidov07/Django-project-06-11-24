@@ -1,0 +1,26 @@
+from django.urls import path
+from .views import *
+urlpatterns = [
+    path('', ProblemsListView.as_view(), name='home'),
+    path('detailproblem/<int:pk>', ProblemsDetailView.as_view(), name='detailproblem'),
+    path('createproblem/', ProblemsCreateView.as_view(), name='createproblem'),
+    path('deleteproblem/<int:pk>', ProblemsDeleteView.as_view(), name='deleteproblem'),
+    path('updateproblem/<int:pk>', ProblemsUpdateView.as_view(), name='updateproblem'),
+    path('allaplication', ApplicationListView.as_view(), name='allapl'),
+    path('detailapplication/<int:pk>', ApplicationDetailView.as_view(), name='detailapplication'),
+    path('createapplication/<int:pk>', ApplicationCreateView.as_view(), name='createapplication'),
+    path('deleteapplication/<int:pk>', ApplicationDeleteView.as_view(), name='deleteapplication'),
+    path('updateapplication/<int:pk>', ApplicationUpdateView.as_view(), name='updateapplication'),
+    path('allskil', SkillsListView.as_view(), name='allskil'),
+    path('detailskills/<int:pk>', SkillsDetailView.as_view(), name='detailskills'),
+    path('createskills/', SkillsCreateView.as_view(), name='createskills'),
+    path('deleteskills/<int:pk>', SkillsDeleteView.as_view(), name='deleteskills'),
+    path('updateskills/<int:pk>', SkillsUpdateView.as_view(), name='updateskills'),
+    path('detailcategory/<int:pk>', CategoryDetailView.as_view(), name='detailcategory'),
+    path('allcategory', CategoryListView.as_view(), name='allcategory'),
+    path('alluser', UserListView.as_view(), name='alluser'),
+    path('detailuser/<int:pk>', UserDetailView.as_view(), name='detailuser'),
+    path('createuser/', UserCreateView.as_view(), name='createuser'),
+    path('deleteuser/<int:pk>', UserDeleteView.as_view(), name='deleteuser'),
+    path('updateuser/<int:pk>', UserUpdateView.as_view(), name='updateuser'),
+]

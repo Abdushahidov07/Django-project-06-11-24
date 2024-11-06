@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    {% if problems.count > 0 %}
+        <div class="row justify-content-center">
+            <h1 class="h11">Все Работы</h1>
+            {% for problem in problems %}
+            <div class="d-flex justify-content-center mb-4">
+                <div class="card" style="width: 800px;">
+                    <div class="row g-0"> 
+                        <div class="col-md-4">
+                            <img src="{{ problem.img.url|default:'path/to/default-image.jpg' }}" class="img-fluid rounded-start" alt="{{ problem.title }}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{% url 'detailproblem' problem.id %}">{{ problem.title }}</a>
+                                </h5>
+                                <p class="card-text">{{ problem.category_id }}</p>
+                                <p class="card-text">{{ problem.city_id }}</p>
+                                <p class="card-text"><small class="text-muted">{{ problem.created_at }}</small></p>
+                                <a href="{% url 'detailproblem' problem.id %}" class="btn btn-primary">Show</a>
+                                <a href="{% url 'createapplication' problem.id %}" class="btn btn-primary">GO TO APPLICATION</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No problems available at the moment.</p>
+    {% endif %}
+</div>
+{% endblock content %}
